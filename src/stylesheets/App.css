@@ -1,7 +1,34 @@
-.header-container {
-  background-color: #673AB7;
-  height: 20px;
-  padding: 20px;
-  color: white; }
-  .header-container .page-title {
-    font-size: 18px; }
+.app-container {
+  background-color: #EEEEEE; }
+  .app-container .header-container {
+    background-color: #673AB7;
+    height: 20px;
+    padding: 20px;
+    color: white; }
+    .app-container .header-container .page-title {
+      font-size: 18px; }
+  .app-container .messages {
+    padding: 1rem;
+    font-size: 14px; }
+    .app-container .messages .message {
+      background: white;
+      padding: 1rem;
+      margin-bottom: 8px;
+      border-radius: 4px;
+      box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.5);
+      line-height: 1.5; }
+      .app-container .messages .message img.profile-image {
+        height: 48px;
+        border-radius: 100%; }
+      .app-container .messages .message .content {
+        margin-top: 1rem; }
+      .app-container .messages .message .meta-header {
+        display: flex;
+        align-items: center; }
+        .app-container .messages .message .meta-header .meta {
+          margin-left: 1rem; }
+        .app-container .messages .message .meta-header .author-name {
+          font-weight: 600; }
+        .app-container .messages .message .meta-header .created-at {
+          font-size: 85%;
+          color: grey; }
