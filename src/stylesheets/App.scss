@@ -9,9 +9,12 @@ $background-color: #EEEEEE;
     height: 20px;
     padding: 20px;
     color: white;
+    display: flex;
+    align-items: center;
 
     .page-title {
       font-size: 18px;
+      margin-left: 1rem;
     }
   }
 

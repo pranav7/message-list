@@ -29,7 +29,8 @@ class App extends Component {
     return (
       <div className="app-container">
         <header className="header-container">
-          <div className="page-title">Messages</div>
+          <i class="material-icons">menu</i>
+          <span className="page-title">Messages</span>
         </header>
         <div className="messages">
           {this.state.messages.map((message) =>

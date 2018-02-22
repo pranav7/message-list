@@ -4,9 +4,12 @@
     background-color: #673AB7;
     height: 20px;
     padding: 20px;
-    color: white; }
+    color: white;
+    display: flex;
+    align-items: center; }
     .app-container .header-container .page-title {
-      font-size: 18px; }
+      font-size: 18px;
+      margin-left: 1rem; }
   .app-container .messages {
     padding: 1rem;
     font-size: 14px; }
