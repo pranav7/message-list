@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import './stylesheets/App.css';
 
 class App extends Component {
@@ -38,7 +39,7 @@ class App extends Component {
                   <img className="profile-image" src={`http://message-list.appspot.com/${message.author.photoUrl}`}></img>
                   <div className="meta">
                     <div className="author-name">{message.author.name}</div>
-                    <div className="created-at">{message.updated}</div>
+                    <div className="created-at">{moment(message.updated, "YYYYMMDD").fromNow()}</div>
                   </div>
                 </div>
                 <div className="content">{message.content}</div>
