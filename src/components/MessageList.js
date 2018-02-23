@@ -2,25 +2,27 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
+const BASE_URL = "http://message-list.appspot.com";
+
 class MessageList extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       messages: []
-    }
+    };
 
-    this.getMessages = this.getMessages.bind(this)
-    this.getMessages()
+    this.getMessages = this.getMessages.bind(this);
+    this.getMessages();
   }
 
   getMessages() {
-    axios.get("http://message-list.appspot.com/messages")
+    axios.get(BASE_URL + "/messages")
       .then(response => {
         this.setState({
           messages: response.data.messages,
           count: response.data.count
-        })
+        });
       })
   }
 
@@ -33,7 +35,7 @@ class MessageList extends Component {
               <div className="meta-header">
                 <img
                   className="profile-image"
-                  src={`http://message-list.appspot.com/${message.author.photoUrl}`}
+                  src={`${BASE_URL}/${message.author.photoUrl}`}
                   alt={message.author.name}
                 ></img>
                 <div className="meta">
@@ -46,7 +48,7 @@ class MessageList extends Component {
           </React.Fragment>
         )}
       </div>
-    )
+    );
   }
 }
 
