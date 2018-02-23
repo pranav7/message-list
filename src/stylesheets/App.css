@@ -6,32 +6,34 @@
     padding: 20px;
     color: white;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    position: fixed;
+    width: 100%; }
     .app-container .header-container .page-title {
       font-size: 18px;
       margin-left: 1rem; }
   .app-container .messages {
-    padding: 1rem;
+    padding: 5rem 1rem 1rem 1rem;
     font-size: 14px; }
-    .app-container .messages .message {
-      background: white;
-      padding: 1rem;
-      margin-bottom: 8px;
-      border-radius: 4px;
-      box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.5);
-      line-height: 1.5; }
-      .app-container .messages .message img.profile-image {
-        height: 48px;
-        border-radius: 100%; }
-      .app-container .messages .message .content {
-        margin-top: 1rem; }
-      .app-container .messages .message .meta-header {
-        display: flex;
-        align-items: center; }
-        .app-container .messages .message .meta-header .meta {
-          margin-left: 1rem; }
-        .app-container .messages .message .meta-header .author-name {
-          font-weight: 600; }
-        .app-container .messages .message .meta-header .created-at {
-          font-size: 85%;
-          color: grey; }
+  .app-container .messages .message {
+    background: white;
+    padding: 1rem;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.5);
+    line-height: 1.5; }
+    .app-container .messages .message img.profile-image {
+      height: 48px;
+      border-radius: 100%; }
+    .app-container .messages .message .content {
+      margin-top: 1rem; }
+    .app-container .messages .message .meta-header {
+      display: flex;
+      align-items: center; }
+      .app-container .messages .message .meta-header .meta {
+        margin-left: 1rem; }
+      .app-container .messages .message .meta-header .author-name {
+        font-weight: 600; }
+      .app-container .messages .message .meta-header .created-at {
+        font-size: 85%;
+        color: grey; }
