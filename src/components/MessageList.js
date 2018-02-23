@@ -6,14 +6,17 @@ const BASE_URL = "http://message-list.appspot.com";
 
 class MessageList extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      messages: []
+      messages: [],
+      isFetching: false
     };
 
-    this.getMessages = this.getMessages.bind(this);
-    this.getMessages();
+    this.getMessages = this.getMessages.bind(this)
+    this.getMoreMessages = this.getMoreMessages.bind(this)
+    this.appendMessages = this.appendMessages.bind(this)
+    this.getMessages()
   }
 
   getMessages() {
@@ -21,9 +24,42 @@ class MessageList extends Component {
       .then(response => {
         this.setState({
           messages: response.data.messages,
-          count: response.data.count
-        });
+          pageToken: response.data.pageToken
+        })
       })
+  }
+
+  getMoreMessages() {
+    this.setState({ isFetching: true })
+    axios.get(BASE_URL + `/messages?pageToken=${this.state.pageToken}`)
+      .then(response => {
+        this.setState({
+          isFetching: false,
+          pageToken: response.data.pageToken
+        })
+        this.appendMessages(response.data.messages)
+      })
+  }
+
+  appendMessages(messages) {
+    var existingMessages = this.state.messages
+    this.setState({
+      messages: existingMessages.concat(messages)
+    })
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll, false)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll, false)
+  }
+
+  onScroll = () => {
+    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500) && this.state.messages.length && !this.state.isFetching) {
+      this.getMoreMessages();
+    }
   }
 
   render() {
@@ -40,7 +76,7 @@ class MessageList extends Component {
                 ></img>
                 <div className="meta">
                   <div className="author-name">{message.author.name}</div>
-                  <div className="created-at">{moment(message.updated, "YYYYMMDD").fromNow()}</div>
+                  <div className="created-at">{moment(message.updated, "YYYYMMDD").fromNow()} | {message.id}</div>
                 </div>
               </div>
               <div className="content">{message.content}</div>
