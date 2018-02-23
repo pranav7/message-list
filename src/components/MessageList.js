@@ -28,7 +28,7 @@ class MessageList extends Component {
     return (
       <div className="messages">
         {this.state.messages.map((message) =>
-          <div key={message.id}>
+          <React.Fragment key={message.id}>
             <div className="message">
               <div className="meta-header">
                 <img
@@ -43,7 +43,7 @@ class MessageList extends Component {
               </div>
               <div className="content">{message.content}</div>
             </div>
-          </div>
+          </React.Fragment>
         )}
       </div>
     )
