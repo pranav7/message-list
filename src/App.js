@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="app-container">
         <header className="header-container">
-          <i class="material-icons">menu</i>
+          <i className="material-icons">menu</i>
           <span className="page-title">Messages</span>
         </header>
         <MessageList />
