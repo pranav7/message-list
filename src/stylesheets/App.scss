@@ -29,6 +29,7 @@ $background-color: #EEEEEE;
     align-items: center;
     position: fixed;
     width: 100%;
+    z-index: 100;
 
     .page-title {
       font-size: 18px;
@@ -42,6 +43,7 @@ $background-color: #EEEEEE;
     max-width: 500px;
     margin: 0 auto;
     transition: ease-out all 0.5s;
+    z-index: 10;
   }
 
   .messages .message {
