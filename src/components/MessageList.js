@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import Message from './Message';
 import axios from 'axios';
-import moment from 'moment';
 
 const BASE_URL = "http://message-list.appspot.com";
 
@@ -67,20 +67,7 @@ class MessageList extends Component {
       <div className="messages">
         {this.state.messages.map((message) =>
           <React.Fragment key={message.id}>
-            <div className="message">
-              <div className="meta-header">
-                <img
-                  className="profile-image"
-                  src={`${BASE_URL}/${message.author.photoUrl}`}
-                  alt={message.author.name}
-                ></img>
-                <div className="meta">
-                  <div className="author-name">{message.author.name}</div>
-                  <div className="created-at">{moment(message.updated, "YYYYMMDD").fromNow()} | {message.id}</div>
-                </div>
-              </div>
-              <div className="content">{message.content}</div>
-            </div>
+            <Message message={message} />
           </React.Fragment>
         )}
       </div>
