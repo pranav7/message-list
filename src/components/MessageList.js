@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Message from './Message';
 import axios from 'axios';
 
-const BASE_URL = "http://message-list.appspot.com";
+const BASE_URL = "https://message-list.appspot.com";
 
 class MessageList extends Component {
   constructor(props) {
