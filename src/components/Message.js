@@ -27,7 +27,7 @@ class Message extends Component {
     var deltaX;
     hammer.on("panleft panright", (event) => {
       deltaX = event.deltaX;
-      messageEl.style.transform = `translate3d(${event.deltaX}px, 0, 0)`;
+      messageEl.style.transform = `translate3d(${event.deltaX + 100}px, 0, 0)`;
     });
 
     messageEl.addEventListener("touchend", (e) => {
