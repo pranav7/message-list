@@ -21,7 +21,7 @@ class Message extends Component {
     console.log("Add Event Listener for " + messageEl.id);
 
     var hammer = new Hammer.Manager(messageEl);
-    var pan = new Hammer.Pan({ direct: Hammer.DIRECTION_HORIZONTAL })
+    var pan = new Hammer.Pan({ direction: Hammer.DIRECTION_HORIZONTAL })
     hammer.add(pan);
 
     var deltaX;
