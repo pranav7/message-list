@@ -41,11 +41,17 @@ class Message extends Component {
         messageEl.style.transition = "ease all 0.3s";
         messageEl.style.transform = `translate3d(${event.deltaX * 3}px, 0, 0)`;
 
-        $(messageEl).fadeTo('slow', 0, () => {
-          $(messageEl).slideUp(() => {
-            this.props.removeMessage(messageEl.id);
-          });
+        $(messageEl).animate({
+          height: 0,
+          opacity: 0
+        }, 750, () => {
+          this.props.removeMessage(messageEl.id);
         });
+
+        // $(messageEl).fadeTo('slow', 0, () => {
+        //   $(messageEl).slideUp(() => {
+        //   });
+        // });
       } else {
         messageEl.style.transition = "ease-in 0.3s"
         messageEl.style.opacity = 1;
