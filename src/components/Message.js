@@ -41,7 +41,9 @@ class Message extends Component {
         messageEl.style.transition = "ease all 0.3s";
         messageEl.style.transform = `translate3d(${event.deltaX * 2}px, 0, 0)`;
 
-        this.props.removeMessage(messageEl.id);
+        setTimeout(() => {
+          this.props.removeMessage(messageEl.id);
+        }, 400)
       } else {
         messageEl.style.transition = "ease-in 0.3s"
         messageEl.style.opacity = 1;
