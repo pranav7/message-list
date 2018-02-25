@@ -37,7 +37,7 @@ class Message extends Component {
     });
 
     hammer.on("panend", (event) => {
-      if(Math.abs(event.deltaX) >= 200) {
+      if(Math.abs(event.deltaX) >= 200 || event.velocityX >= 4.0) {
         messageEl.style.transform = `translate3d(${event.deltaX * 3}px, 0, 0)`;
 
         $(messageEl).animate({
