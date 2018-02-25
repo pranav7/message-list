@@ -18,12 +18,11 @@ class Message extends Component {
 
   addSwipeListener() {
     var messageEl = document.getElementById(this.state.componentId);
-    console.log("Add Event Listener for " + messageEl.id);
-
+    console.log(messageEl.className)
     var hammer = new Hammer.Manager(messageEl);
     var pan = new Hammer.Pan({ direction: Hammer.DIRECTION_HORIZONTAL })
-    hammer.add(pan);
 
+    hammer.add(pan);
     hammer.on("pan", (event) => {
       messageEl.style.transition = "none";
 
@@ -39,7 +38,7 @@ class Message extends Component {
 
     hammer.on("panend", (event) => {
       if(event.deltaX > 200 || event.deltaX < -200) {
-        messageEl.style.transition = "ease-in 0.3s";
+        messageEl.style.transition = "ease all 0.3s";
         messageEl.style.transform = `translate3d(${event.deltaX * 2}px, 0, 0)`;
 
         this.props.removeMessage(messageEl.id);
@@ -58,7 +57,7 @@ class Message extends Component {
   render() {
     return (
       <div className="message" id={this.state.componentId}>
-        <div className="meta-header" id={this.state.componentId}>
+        <div className="meta-header">
           <img
             className="profile-image"
             src={`${BASE_URL}/${this.state.message.author.photoUrl}`}
@@ -71,7 +70,7 @@ class Message extends Component {
             </div>
           </div>
         </div>
-        <div className="content" id={this.state.componentId}>
+        <div className="content">
           {this.state.message.content}
         </div>
       </div>

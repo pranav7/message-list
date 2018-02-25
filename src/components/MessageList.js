@@ -50,14 +50,14 @@ class MessageList extends Component {
   }
 
   removeMessage(id) {
-    console.log("Delete " + id)
     var messages = this.state.messages.filter((message) => {
       return message.id != id;
     });
 
-    setTimeout(() => {
-      this.setState({ messages: messages });
-    }, 250);
+    this.setState({ messages: messages });
+    if (this.state.messages.length === 0) {
+      this.getMoreMessages();
+    }
   }
 
   componentDidMount() {
