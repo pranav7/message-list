@@ -39,12 +39,13 @@ class Message extends Component {
     hammer.on("panend", (event) => {
       if(event.deltaX > 200 || event.deltaX < -200) {
         messageEl.style.transition = "ease all 0.3s";
-        messageEl.style.transform = `translate3d(${event.deltaX * 2}px, 0, 0)`;
+        messageEl.style.transform = `translate3d(${event.deltaX * 3}px, 0, 0)`;
 
-        $(messageEl).hide(500);
-        setTimeout(() => {
-          this.props.removeMessage(messageEl.id);
-        }, 1000)
+        $(messageEl).fadeTo('slow', 0, () => {
+          $(messageEl).slideUp(() => {
+            this.props.removeMessage(messageEl.id);
+          });
+        });
       } else {
         messageEl.style.transition = "ease-in 0.3s"
         messageEl.style.opacity = 1;
