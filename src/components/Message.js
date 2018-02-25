@@ -25,6 +25,7 @@ class Message extends Component {
     hammer.add(pan);
 
     hammer.on("pan", (event) => {
+      messageEl.style.transition = "";
       var angle = Math.abs(event.angle);
       if ((angle >= 0 && angle < 30) || (angle > 150 && angle <= 180)) {
         messageEl.style.transform = `translate3d(${event.deltaX}px, 0 , 0)`;
@@ -33,8 +34,12 @@ class Message extends Component {
 
     hammer.on("panend", (event) => {
       if(event.deltaX > 200 || event.deltaX < -200) {
+        messageEl.style.transition = "ease-in 0.3s";
+        messageEl.style.transform = `translate3d(${event.deltaX * 2}px, 0, 0)`;
+
         this.props.removeMessage(messageEl.id);
       } else {
+        messageEl.style.transition = "ease-in 0.3s"
         messageEl.style.transform = `translate3d(0, 0, 0)`;
       }
     });
