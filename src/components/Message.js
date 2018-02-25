@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Hammer from 'hammerjs';
+import $ from 'jquery';
 
 const BASE_URL = "http://message-list.appspot.com";
 
@@ -40,9 +41,10 @@ class Message extends Component {
         messageEl.style.transition = "ease all 0.3s";
         messageEl.style.transform = `translate3d(${event.deltaX * 2}px, 0, 0)`;
 
+        $(messageEl).hide(500);
         setTimeout(() => {
           this.props.removeMessage(messageEl.id);
-        }, 250)
+        }, 1000)
       } else {
         messageEl.style.transition = "ease-in 0.3s"
         messageEl.style.opacity = 1;

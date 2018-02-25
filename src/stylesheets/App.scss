@@ -1,6 +1,13 @@
 $header-color: #673AB7;
 $background-color: #EEEEEE;
 
+@keyframes slide {
+  to {
+    transform: translate3d(500px, 0, 0);
+    display: none;
+  }
+}
+
 @keyframes spin {
   from { transform:rotate(360deg); }
   to { transform:rotate(0deg); }
