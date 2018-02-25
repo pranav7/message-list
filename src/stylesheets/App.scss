@@ -20,6 +20,10 @@ $background-color: #EEEEEE;
   animation-timing-function: linear;
 }
 
+body {
+  background-color: $background-color;
+}
+
 .app-container {
   background-color: $background-color;
   min-height: 100vh;
