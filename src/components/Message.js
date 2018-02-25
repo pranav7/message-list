@@ -25,9 +25,14 @@ class Message extends Component {
     hammer.add(pan);
 
     hammer.on("pan", (event) => {
-      messageEl.style.transition = "";
+      messageEl.style.transition = "none";
+
       var angle = Math.abs(event.angle);
+      var absDelta = Math.abs(event.deltaX);
+      var opacity = 1 - (absDelta / document.body.offsetWidth);
+
       if ((angle >= 0 && angle < 30) || (angle > 150 && angle <= 180)) {
+        messageEl.style.opacity = opacity;
         messageEl.style.transform = `translate3d(${event.deltaX}px, 0 , 0)`;
       }
     });
@@ -40,6 +45,7 @@ class Message extends Component {
         this.props.removeMessage(messageEl.id);
       } else {
         messageEl.style.transition = "ease-in 0.3s"
+        messageEl.style.opacity = 1;
         messageEl.style.transform = `translate3d(0, 0, 0)`;
       }
     });
