@@ -18,7 +18,6 @@ class Message extends Component {
 
   addSwipeListener() {
     var messageEl = document.getElementById(this.state.componentId);
-    console.log(messageEl.className)
     var hammer = new Hammer.Manager(messageEl);
     var pan = new Hammer.Pan({ direction: Hammer.DIRECTION_HORIZONTAL })
 
