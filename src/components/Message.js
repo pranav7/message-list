@@ -24,19 +24,20 @@ class Message extends Component {
     var pan = new Hammer.Pan({ direction: Hammer.DIRECTION_HORIZONTAL })
     hammer.add(pan);
 
-    var deltaX;
-    hammer.on("panleft panright", (event) => {
-      deltaX = event.deltaX;
-      messageEl.style.transform = `translate3d(${event.deltaX + 100}px, 0, 0)`;
+    hammer.on("pan", (event) => {
+      var angle = Math.abs(event.angle);
+      if ((angle >= 0 && angle < 30) || (angle > 150 && angle <= 180)) {
+        messageEl.style.transform = `translate3d(${event.deltaX}px, 0 , 0)`;
+      }
     });
 
-    messageEl.addEventListener("touchend", (e) => {
-      if(deltaX > 200 || deltaX < -200) {
+    hammer.on("panend", (event) => {
+      if(event.deltaX > 200 || event.deltaX < -200) {
         this.props.removeMessage(messageEl.id);
       } else {
         messageEl.style.transform = `translate3d(0, 0, 0)`;
       }
-    }, false);
+    });
   }
 
   componentDidMount() {
