@@ -29,7 +29,7 @@ class Message extends Component {
 
       var angle = Math.abs(event.angle);
       var absDelta = Math.abs(event.deltaX);
-      var opacity = 1 - (absDelta / document.body.offsetWidth);
+      var opacity = 1 - (absDelta / (document.body.offsetWidth / 1.25));
 
       if ((angle >= 0 && angle < 30) || (angle > 150 && angle <= 180)) {
         messageEl.style.opacity = opacity;
