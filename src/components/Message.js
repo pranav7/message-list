@@ -43,7 +43,7 @@ class Message extends Component {
 
         setTimeout(() => {
           this.props.removeMessage(messageEl.id);
-        }, 400)
+        }, 250)
       } else {
         messageEl.style.transition = "ease-in 0.3s"
         messageEl.style.opacity = 1;
