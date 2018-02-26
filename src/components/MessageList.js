@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Message from './Message';
 import $ from 'jquery';
 
-const BASE_URL = "https://message-list.appspot.com";
-
 class MessageList extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +11,7 @@ class MessageList extends Component {
       isFetching: false
     };
 
+    this.baseUrl = 'https://message-list.appspot.com'
     this.getMessages = this.getMessages.bind(this);
     this.getMoreMessages = this.getMoreMessages.bind(this);
     this.appendMessages = this.appendMessages.bind(this);
@@ -45,7 +44,7 @@ class MessageList extends Component {
   }
 
   getMessages(callback, options = {}) {
-    $.get(BASE_URL + "/messages", options)
+    $.get(this.baseUrl + "/messages", options)
       .done((data) => {
         callback(data);
       })
@@ -113,7 +112,7 @@ class MessageList extends Component {
       <div className="messages">
         {this.state.messages.map((message) =>
           <React.Fragment key={message.id}>
-            <Message message={message} removeMessage={this.removeMessage.bind(this)}/>
+            <Message message={message} removeMessage={this.removeMessage.bind(this)} baseUrl={this.baseUrl} />
           </React.Fragment>
         )}
         {this.loadingEl()}

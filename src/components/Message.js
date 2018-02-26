@@ -3,8 +3,6 @@ import moment from 'moment';
 import Hammer from 'hammerjs';
 import $ from 'jquery';
 
-const BASE_URL = "http://message-list.appspot.com";
-
 class Message extends Component {
   constructor(props) {
     super(props)
@@ -64,7 +62,7 @@ class Message extends Component {
         <div className="meta-header">
           <img
             className="profile-image"
-            src={`${BASE_URL}/${this.state.message.author.photoUrl}`}
+            src={`${this.props.baseUrl}/${this.state.message.author.photoUrl}`}
             alt={this.state.message.author.name}
           ></img>
           <div className="meta">
