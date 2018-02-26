@@ -16,6 +16,7 @@ class MessageList extends Component {
     this.getMessages = this.getMessages.bind(this);
     this.getMoreMessages = this.getMoreMessages.bind(this);
     this.appendMessages = this.appendMessages.bind(this);
+    this.onScroll = this.onScroll.bind(this);
     this.loadingEl = this.loadingEl.bind(this);
     this.noNetworkEl = this.noNetworkEl.bind(this);
     this.init = this.init.bind(this);
@@ -80,7 +81,7 @@ class MessageList extends Component {
     window.removeEventListener('scroll', this.onScroll, false)
   }
 
-  onScroll = () => {
+  onScroll() {
     if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500) &&
     this.state.messages.length &&
     !this.state.isFetching) {
