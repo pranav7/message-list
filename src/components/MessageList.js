@@ -50,16 +50,15 @@ class MessageList extends Component {
         callback(data);
       })
       .fail((data) => {
-        console.log("No Network")
         this.setState({ noNetwork: true });
       })
   }
 
   appendMessages(messages) {
-    var existingMessages = this.state.messages
+    var existingMessages = this.state.messages;
     this.setState({
       messages: existingMessages.concat(messages)
-    })
+    });
   }
 
   removeMessage(id) {
@@ -74,11 +73,11 @@ class MessageList extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.onScroll, false)
+    window.addEventListener('scroll', this.onScroll, false);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll, false)
+    window.removeEventListener('scroll', this.onScroll, false);
   }
 
   onScroll() {
