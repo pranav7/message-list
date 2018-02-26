@@ -112,7 +112,9 @@ class MessageList extends Component {
       <div className="messages">
         {this.state.messages.map((message) =>
           <React.Fragment key={message.id}>
-            <Message message={message} removeMessage={this.removeMessage.bind(this)} baseUrl={this.baseUrl} />
+            <Message message={message}
+              removeMessage={this.removeMessage.bind(this)}
+              baseUrl={this.baseUrl} />
           </React.Fragment>
         )}
         {this.loadingEl()}
