@@ -63,8 +63,7 @@ class Message extends Component {
           <img
             className="profile-image"
             src={`${this.props.baseUrl}/${this.state.message.author.photoUrl}`}
-            alt={this.state.message.author.name}
-          ></img>
+            alt={this.state.message.author.name} />
           <div className="meta">
             <div className="author-name">{this.state.message.author.name}</div>
             <div className="created-at">
