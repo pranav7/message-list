@@ -7,16 +7,12 @@ class Message extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      message: this.props.message,
-      componentId: this.props.message.id
-    }
-
+    this.state = { message: this.props.message }
     this.addSwipeListener = this.addSwipeListener.bind(this);
   }
 
   addSwipeListener() {
-    var messageEl = document.getElementById(this.state.componentId);
+    var messageEl = document.getElementById(this.props.message.id);
     var hammer = new Hammer.Manager(messageEl);
     var pan = new Hammer.Pan({ direction: Hammer.DIRECTION_HORIZONTAL })
 
@@ -58,7 +54,7 @@ class Message extends Component {
 
   render() {
     return (
-      <div className="message" id={this.state.componentId}>
+      <div className="message" id={this.props.message.id}>
         <div className="meta-header">
           <img
             className="profile-image"
