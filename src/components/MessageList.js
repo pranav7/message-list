@@ -17,30 +17,41 @@ class MessageList extends Component {
     this.getMoreMessages = this.getMoreMessages.bind(this);
     this.appendMessages = this.appendMessages.bind(this);
     this.loadingEl = this.loadingEl.bind(this);
-    this.getMessages()
+    this.noNetworkEl = this.noNetworkEl.bind(this);
+    this.init = this.init.bind(this);
+    this.init()
   }
 
-  getMessages() {
-    $.get(BASE_URL + "/messages", {}, (response) => {
+  init() {
+    this.getMessages((response) => {
       this.setState({
         messages: response.messages,
         pageToken: response.pageToken
-      })
+      });
     });
   }
 
   getMoreMessages() {
     this.setState({ isFetching: true })
 
-    $.get(BASE_URL + `/messages`,
-      { pageToken: this.state.pageToken },
-      (response) => {
-        this.setState({
-          isFetching: false,
-          pageToken: response.pageToken
-        })
-        this.appendMessages(response.messages)
-      });
+    this.getMessages((response) => {
+      this.setState({
+        isFetching: false,
+        pageToken: response.pageToken
+      })
+      this.appendMessages(response.messages)
+    }, { pageToken: this.state.pageToken });
+  }
+
+  getMessages(callback, options = {}) {
+    $.get(BASE_URL + "/messages", options)
+      .done((data) => {
+        callback(data);
+      })
+      .fail((data) => {
+        console.log("No Network")
+        this.setState({ noNetwork: true });
+      })
   }
 
   appendMessages(messages) {
@@ -87,6 +98,16 @@ class MessageList extends Component {
     }
   }
 
+  noNetworkEl() {
+    if (this.state.noNetwork) {
+      return (
+        <div className="no-network">
+          No Internet Connection
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="messages">
@@ -96,6 +117,7 @@ class MessageList extends Component {
           </React.Fragment>
         )}
         {this.loadingEl()}
+        {this.noNetworkEl()}
       </div>
     );
   }
