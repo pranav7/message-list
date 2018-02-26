@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Message from './Message';
-import axios from 'axios';
+import $ from 'jquery';
 
 const BASE_URL = "https://message-list.appspot.com";
 
@@ -21,25 +21,26 @@ class MessageList extends Component {
   }
 
   getMessages() {
-    axios.get(BASE_URL + "/messages")
-      .then(response => {
-        this.setState({
-          messages: response.data.messages,
-          pageToken: response.data.pageToken
-        })
+    $.get(BASE_URL + "/messages", {}, (response) => {
+      this.setState({
+        messages: response.messages,
+        pageToken: response.pageToken
       })
+    });
   }
 
   getMoreMessages() {
     this.setState({ isFetching: true })
-    axios.get(BASE_URL + `/messages?pageToken=${this.state.pageToken}`)
-      .then(response => {
+
+    $.get(BASE_URL + `/messages`,
+      { pageToken: this.state.pageToken },
+      (response) => {
         this.setState({
           isFetching: false,
-          pageToken: response.data.pageToken
+          pageToken: response.pageToken
         })
-        this.appendMessages(response.data.messages)
-      })
+        this.appendMessages(response.messages)
+      });
   }
 
   appendMessages(messages) {
