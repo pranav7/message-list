@@ -43,10 +43,10 @@ class MessageList extends Component {
     }, { pageToken: this.state.pageToken });
   }
 
-  getMessages(callback, options = {}) {
+  getMessages(success, options = {}) {
     $.get(this.baseUrl + "/messages", options)
       .done((data) => {
-        callback(data);
+        success(data)
       })
       .fail((data) => {
         this.setState({ noNetwork: true });

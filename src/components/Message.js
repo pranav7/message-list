@@ -21,10 +21,10 @@ class Message extends Component {
       messageEl.style.transition = "none";
 
       var angle = Math.abs(event.angle);
-      var absDelta = Math.abs(event.deltaX);
-      var opacity = 1 - (absDelta / (document.body.offsetWidth / 1.25));
-
       if ((angle >= 0 && angle < 30) || (angle > 150 && angle <= 180)) {
+        var absDelta = Math.abs(event.deltaX);
+        var opacity = 1 - (absDelta / (document.body.offsetWidth / 1.25));
+
         messageEl.style.opacity = opacity;
         messageEl.style.transform = `translate3d(${event.deltaX}px, 0 , 0)`;
       }
