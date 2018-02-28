@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Message List",
+  "name": "Message List with Infinite Scroll and Swipe",
   "icons": [
     {
       "src": "favicon.ico",
